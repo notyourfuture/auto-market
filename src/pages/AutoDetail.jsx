@@ -1,0 +1,68 @@
+import { Button, Container, Grid } from "@mui/material";
+import React, { useContext, useEffect } from "react";
+import { useParams } from "react-router";
+import { ClientContext } from "../contexts/ClientProvider";
+
+const AutoDetail = () => {
+  const params = useParams();
+  const { getAutoDetail, detail, addAndDeleteAutoInCart, checkAutoInCart } =
+    useContext(ClientContext);
+  useEffect(() => {
+    getAutoDetail(params.id);
+  }, []);
+  if (!detail) {
+    return <h2>Loading...</h2>;
+  }
+  return (
+    <Container>
+      <h2>Auto DETAIL</h2>
+      <div className="auto-detail">
+        <Grid container>
+          <Grid item xs={12} sm={8} md={8}>
+            <div>
+              <img src={detail.image} alt={detail.name} />
+            </div>
+          </Grid>
+          <Grid item xs={12} sm={4} md={4}>
+            <div>
+              <h2>{detail.name}</h2>
+              <ul>
+                <li>
+                  <span>Brand: </span>
+                  <strong>{detail.brand}</strong>
+                </li>
+                <li>
+                  <span>Size: </span>
+                  <strong>{detail.size}</strong>
+                </li>
+                <li>
+                  <span>Color: </span>
+                  <strong>{detail.color}</strong>
+                </li>
+              </ul>
+              <h3>Price: {detail.price} $</h3>
+              {checkAutoInCart(detail.id) ? (
+                <Button
+                  onClick={() => addAndDeleteAutoInCart(detail)}
+                  variant="contained"
+                  color="error"
+                >
+                  ADDED TO BASKET
+                </Button>
+              ) : (
+                <Button
+                  onClick={() => addAndDeleteAutoInCart(detail)}
+                  variant="contained"
+                >
+                  ADD TO BASKET
+                </Button>
+              )}
+            </div>
+          </Grid>
+        </Grid>
+      </div>
+    </Container>
+  );
+};
+
+export default AutoDetail;
