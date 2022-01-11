@@ -2,8 +2,8 @@ import { Button, Container, TextField } from "@mui/material";
 import React, { useContext, useState } from "react";
 import { AdminContext } from "../contexts/AdminProvider";
 
-const AddProduct = () => {
-  const [newProduct, setNewProduct] = useState({
+const AddAuto = () => {
+  const [newAuto, setAuto] = useState({
     brand: "",
     model: "",
     price: "",
@@ -17,51 +17,52 @@ const AddProduct = () => {
 
   function handleInput(event) {
     let object = {
-      ...newProduct,
+      ...newAuto,
       [event.target.name]: event.target.value,
     };
-    setNewProduct(object);
+    setAuto(object);
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    for (let key in newProduct) {
-      if (!newProduct[key].trim()) {
+    for (let key in newAuto) {
+      if (!newAuto[key].trim()) {
         alert("Fields required!");
         return;
       }
     }
-    addProduct(newProduct);
-    setNewProduct({
-      name: "",
+    addProduct(newAuto);
+    setAuto({
       brand: "",
+      model: "",
       price: "",
-      size: "",
+      volume: "",
+      data_of_manufacture: "",
       color: "",
       image: "",
     });
   }
 
   return (
-    <div className="add-product">
+    <div className="add-auto">
       <Container>
-        <h2>Добавить продукт</h2>
+        <h2>ADD AUTO</h2>
         <form onSubmit={handleSubmit}>
-          <TextField
-            onChange={handleInput}
-            fullWidth
-            name="name"
-            label="Name"
-            variant="standard"
-            value={newProduct.name}
-          />
           <TextField
             onChange={handleInput}
             fullWidth
             name="brand"
             label="Brand"
             variant="standard"
-            value={newProduct.brand}
+            value={newAuto.brand}
+          />
+          <TextField
+            onChange={handleInput}
+            fullWidth
+            name="model"
+            label="Model"
+            variant="standard"
+            value={newAuto.model}
           />
           <TextField
             onChange={handleInput}
@@ -69,7 +70,7 @@ const AddProduct = () => {
             name="price"
             label="Price"
             variant="standard"
-            value={newProduct.price}
+            value={newAuto.price}
           />
           <TextField
             onChange={handleInput}
@@ -77,7 +78,23 @@ const AddProduct = () => {
             name="size"
             label="Size"
             variant="standard"
-            value={newProduct.size}
+            value={newAuto.size}
+          />
+          <TextField
+            onChange={handleInput}
+            fullWidth
+            name="volume"
+            label="Volume"
+            variant="standard"
+            value={newAuto.volume}
+          />
+          <TextField
+            onChange={handleInput}
+            fullWidth
+            name="data_of_manufacture"
+            label="Data_Of_Manifacture"
+            variant="standard"
+            value={newAuto.data_of_manufacture}
           />
           <TextField
             onChange={handleInput}
@@ -85,7 +102,7 @@ const AddProduct = () => {
             name="color"
             label="Color"
             variant="standard"
-            value={newProduct.color}
+            value={newAuto.color}
           />
           <TextField
             onChange={handleInput}
@@ -93,14 +110,14 @@ const AddProduct = () => {
             name="image"
             label="Image"
             variant="standard"
-            value={newProduct.image}
+            value={newAuto.image}
           />
           <Button type="submit" variant="contained">
-            Add
+            ADD
           </Button>
         </form>
       </Container>
     </div>
   );
 };
-export default AddProduct;
+export default AddAuto;
