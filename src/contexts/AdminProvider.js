@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import { toast } from "react-toastify";
 import { API } from "../helpers/const";
-import axios from "axios";
+import axios, { Axios } from "axios";
 
 export const AdminConxet = React.createContext();
 
@@ -40,15 +40,15 @@ const AdminProvider = (props) => {
       console.log(error);
     }
   };
+
   const saveEditedAuto = async (auto) => {
     try {
-      await axios.patch(`${API}/${auto.id}`),
-        {
-          ...auto,
-          price: +auto.price,
-        };
+      await axios.patch(`${API}/${auto.id}`, {
+        ...auto,
+        price: +auto.price,
+      });
       getAutos();
-      toats.success("Success!", {
+      toast.success("Success!", {
         pauseOnHOver: false,
         autoClose: 1000,
       });

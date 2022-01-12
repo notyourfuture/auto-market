@@ -13,7 +13,7 @@ const AddAuto = () => {
     image: "",
   });
 
-  const { addProduct } = useContext(AdminContext);
+  const { addAuto } = useContext(AdminContext);
 
   function handleInput(event) {
     let object = {
@@ -31,7 +31,7 @@ const AddAuto = () => {
         return;
       }
     }
-    addProduct(newAuto);
+    addAuto(newAuto);
     setAuto({
       brand: "",
       model: "",
