@@ -68,7 +68,7 @@ const ClientProvider = (props) => {
         totalPrice: 0,
       };
     }
-    let cartProduct = {
+    let cartAuto = {
       auto: auto,
       count: 1,
       subPrice: 0,
@@ -174,7 +174,7 @@ const ClientProvider = (props) => {
   const indexOfLast = postsPerPage * currentPage;
   const indexOfFirtsPost = indexOfLast - postsPerPage;
   const currentPosts = posts.slice(indexOfFirtsPost, indexOfLast);
-  const totalProductsCount = posts.length;
+  const totalAutosCount = posts.length;
 
   return (
     <ClientContext.Provider
