@@ -2,7 +2,7 @@ import { Button, TableCell, TableRow } from "@mui/material";
 import React, { useContext, useState } from "react";
 import { AdminContext } from "../contexts/AdminProvider";
 
-const EditRow = ({ editAuto, setEditProduct }) => {
+const EditRow = ({ editAuto, setEditAuto }) => {
   const [auto, setAuto] = useState(editAuto);
   const { saveEditedAuto } = useContext(AdminContext);
   function handleSubmit(event) {
@@ -14,7 +14,7 @@ const EditRow = ({ editAuto, setEditProduct }) => {
   }
   function handleClick() {
     saveEditedAuto(auto);
-    setEditProduct(null);
+    setEditAuto(null);
   }
 
   return (

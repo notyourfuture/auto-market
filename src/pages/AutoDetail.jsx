@@ -25,15 +25,19 @@ const AutoDetail = () => {
           </Grid>
           <Grid item xs={12} sm={4} md={4}>
             <div>
-              <h2>{detail.name}</h2>
+              <h2>{detail.brand}</h2>
               <ul>
                 <li>
-                  <span>Brand: </span>
-                  <strong>{detail.brand}</strong>
+                  <span>Model: </span>
+                  <strong>{detail.model}</strong>
                 </li>
                 <li>
-                  <span>Size: </span>
-                  <strong>{detail.size}</strong>
+                  <span>Date: </span>
+                  <strong>{detail.data_of_manufacture}</strong>
+                </li>
+                <li>
+                  <span>Volume: </span>
+                  <strong>{detail.volume}</strong>
                 </li>
                 <li>
                   <span>Color: </span>

@@ -6,21 +6,24 @@ import AddAuto from "./pages/AddAuto";
 import AdminPanel from "./pages/AdminPanel";
 import HomePage from "./pages/HomePage";
 import MyNavbar from "./components/MyNavbar";
+import AuthProvider from "./contexts/AuthProvider";
 
 const MyRoutes = () => {
   return (
-    <AdminProvider>
-      <ClientProvider>
-        <BrowserRouter>
-          <MyNavbar />
-          <Routes>
-            <Route path="/add" element={<AddAuto />} />
-            <Route path="/admin" element={<AdminPanel />} />
-            <Route path="/" elment={<HomePage />} />
-          </Routes>
-        </BrowserRouter>
-      </ClientProvider>
-    </AdminProvider>
+    <AuthProvider>
+      <AdminProvider>
+        <ClientProvider>
+          <BrowserRouter>
+            <MyNavbar />
+            <Routes>
+              <Route path="/add" element={<AddAuto />} />
+              <Route path="/admin" element={<AdminPanel />} />
+              <Route path="/" elment={<HomePage />} />
+            </Routes>
+          </BrowserRouter>
+        </ClientProvider>
+      </AdminProvider>
+    </AuthProvider>
   );
 };
 

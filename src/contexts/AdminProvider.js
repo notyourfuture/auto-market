@@ -3,7 +3,11 @@ import { toast } from "react-toastify";
 import { API } from "../helpers/const";
 import axios, { Axios } from "axios";
 
-export const AdminConxet = React.createContext();
+export const AdminContext = React.createContext();
+
+const INIT_STATE = {
+  autos: null,
+};
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -14,14 +18,10 @@ const reducer = (state, action) => {
   }
 };
 
-const INIT_STATE = {
-  autos: null,
-};
-
 const AdminProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
-  const addAutos = async (newAuto) => {
+  const addAuto = async (newAuto) => {
     try {
       await axios.post(API, { ...newAuto, price: +newAuto.price });
     } catch (error) {
@@ -71,9 +71,9 @@ const AdminProvider = (props) => {
   };
 
   return (
-    <AdminConxet.Provider
+    <AdminContext.Provider
       value={{
-        addAutos: addAutos,
+        addAuto: addAuto,
         getAutos: getAutos,
         saveEditedAuto: saveEditedAuto,
         deleteAuto: deleteAuto,
@@ -81,7 +81,7 @@ const AdminProvider = (props) => {
       }}
     >
       {props.children}
-    </AdminConxet.Provider>
+    </AdminContext.Provider>
   );
 };
 
