@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 import { ClientContext } from "../contexts/ClientProvider";
 
-export default function ProductCard({ item }) {
+export default function AutoCard({ item }) {
   const { addAndDeleteAutoIncart, checkAutoInCart } =
     React.useContext(ClientContext);
   return (
@@ -18,7 +18,7 @@ export default function ProductCard({ item }) {
         height="140"
         image={item.image}
         alt="green iguana"
-        className="product-card-image"
+        className="auto-card-image"
       />
       <CardContent>
         <Typography
@@ -27,7 +27,7 @@ export default function ProductCard({ item }) {
           variant="h5"
           component="div"
         >
-          {item.name}
+          {item.brand}
         </Typography>
         <Typography variant="body2">
           Price: <strong>{item.price}</strong> ${" "}
@@ -40,11 +40,11 @@ export default function ProductCard({ item }) {
             onClick={() => addAndDeleteAutoIncart(item)}
             size="small"
           >
-            в корзине
+            ADDED TO BASKET
           </Button>
         ) : (
           <Button onClick={() => addAndDeleteAutoIncart(item)} size="small">
-            в корзину{" "}
+            ADD TO BASKET{" "}
           </Button>
         )}
 

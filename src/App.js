@@ -1,4 +1,3 @@
-import "bootstrap/dist/css/bootstrap.min.css";
 import MyRoutes from "./MyRoutes";
 
 function App() {

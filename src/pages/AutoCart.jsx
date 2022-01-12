@@ -11,7 +11,7 @@ const AutoCart = () => {
   if (!cart) {
     return <h2>Loading...</h2>;
   }
-  if (cart.products.length === 0) {
+  if (cart.autos.length === 0) {
     return <h2>Your cart is empty</h2>;
   }
   return (
