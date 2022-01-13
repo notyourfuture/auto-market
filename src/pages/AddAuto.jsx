@@ -72,14 +72,7 @@ const AddAuto = () => {
             variant="standard"
             value={newAuto.price}
           />
-          <TextField
-            onChange={handleInput}
-            fullWidth
-            name="size"
-            label="Size"
-            variant="standard"
-            value={newAuto.size}
-          />
+         
           <TextField
             onChange={handleInput}
             fullWidth

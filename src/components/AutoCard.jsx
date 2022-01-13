@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { ClientContext } from "../contexts/ClientProvider";
 
 export default function AutoCard({ item }) {
-  const { addAndDeleteAutoIncart, checkAutoInCart } =
+  const { addAndDeleteAutoInCart, checkAutoInCart } =
     React.useContext(ClientContext);
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -37,19 +37,19 @@ export default function AutoCard({ item }) {
         {checkAutoInCart(item.id) ? (
           <Button
             color="error"
-            onClick={() => addAndDeleteAutoIncart(item)}
+            onClick={() => addAndDeleteAutoInCart(item)}
             size="small"
           >
-            ADDED TO BASKET
+            BOUGHT
           </Button>
         ) : (
-          <Button onClick={() => addAndDeleteAutoIncart(item)} size="small">
-            ADD TO BASKET{" "}
+          <Button onClick={() => addAndDeleteAutoInCart(item)} size="small">
+            BUY{" "}
           </Button>
         )}
 
         <Link to={`/product/${item.id}`}>
-          <Button size="small">LEARN MORE</Button>
+          <Button size="small">DETAILS</Button>
         </Link>
       </CardActions>
     </Card>

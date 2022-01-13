@@ -24,7 +24,8 @@ const rows = [
 ];
 
 export default function CartTable({cart}) {
-    const {changeCountCartAuto, deletAutoInCart} = React.useContext(ClientContext);
+    console.log(cart)
+    const {changeCountCartAuto, deleteAutoInCart} = React.useContext(ClientContext);
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -45,9 +46,9 @@ export default function CartTable({cart}) {
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {item.auto.name}
+                {item.auto.brand}
               </TableCell>
-              <TableCell align="right">{item.auto.brand}</TableCell>
+              <TableCell align="right">{item.auto.model}</TableCell>
               <TableCell align="right"> <Link to={`/auto/${item.auto.id}`}> < img  width="60" src={item.auto.image} alt="auto" /> </Link> </TableCell>
               <TableCell align="right"> <input onChange={(event) => {
                   if(event.target.value < 1) {

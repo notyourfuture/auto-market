@@ -21,7 +21,7 @@ import Logoout from "../images/logout.png";
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const MyNavbar = () => {
-  const { productsCount } = React.useContext(ClientContext);
+  const { autosCount } = React.useContext(ClientContext);
   const { authWithGoogle, logout, user } = React.useContext(AuthContext);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -122,7 +122,7 @@ const MyNavbar = () => {
           <MenuItem>
             <Link to="/cart">
               <IconButton color="inherit">
-                <Badge badgeContent={productsCount} color="error">
+                <Badge badgeContent={autosCount} color="error">
                   <ShoppingBasketIcon />
                 </Badge>
               </IconButton>

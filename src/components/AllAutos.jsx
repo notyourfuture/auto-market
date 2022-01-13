@@ -4,11 +4,12 @@ import { ClientContext } from "../contexts/ClientProvider";
 import AutoCard from "./AutoCard";
 
 const AllAutos = () => {
-  const { getAuto, auto } = useContext(ClientContext);
+  const { getAutos, autos } = useContext(ClientContext);
   useEffect(() => {
-    getAuto();
+    getAutos();
   }, []);
-  if (!auto) {
+  console.log(autos)
+  if (!autos) {
     return <h2>Loading...</h2>;
   }
   return (
@@ -16,7 +17,7 @@ const AllAutos = () => {
       <h1>ALL AUTOS</h1>
       <div>
         <Grid container spacing={4}>
-          {auto.map((item) => (
+          {autos.map((item) => (
             <Grid item key={item.id} xs={12} sm={6} md={4}>
               <AutoCard item={item} />
             </Grid>

@@ -7,6 +7,7 @@ import AdminPanel from "./pages/AdminPanel";
 import HomePage from "./pages/HomePage";
 import MyNavbar from "./components/MyNavbar";
 import AuthProvider from "./contexts/AuthProvider";
+import AutoCart from "./pages/AutoCart";
 
 const MyRoutes = () => {
   return (
@@ -18,7 +19,8 @@ const MyRoutes = () => {
             <Routes>
               <Route path="/add" element={<AddAuto />} />
               <Route path="/admin" element={<AdminPanel />} />
-              <Route path="/" elment={<HomePage />} />
+              <Route path="/" element={<HomePage />} />
+              <Route path="/cart" element={<AutoCart />} />
             </Routes>
           </BrowserRouter>
         </ClientProvider>
