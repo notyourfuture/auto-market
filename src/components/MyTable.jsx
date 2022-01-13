@@ -16,6 +16,8 @@ export default function MyTable() {
     getAutos();
   }, []);
 
+  console.log(autos )
+
   const [editAuto, setEditAuto] = React.useState(null);
   console.log(editAuto);
 
