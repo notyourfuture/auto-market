@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage";
 import MyNavbar from "./components/MyNavbar";
 import AuthProvider from "./contexts/AuthProvider";
 import AutoCart from "./pages/AutoCart";
+import MyCreditCard from "./components/MyCreditCard";
 
 const MyRoutes = () => {
   return (
@@ -21,6 +22,7 @@ const MyRoutes = () => {
               <Route path="/admin" element={<AdminPanel />} />
               <Route path="/" element={<HomePage />} />
               <Route path="/cart" element={<AutoCart />} />
+              <Route path="/buy" element={<MyCreditCard />} />
             </Routes>
           </BrowserRouter>
         </ClientProvider>
