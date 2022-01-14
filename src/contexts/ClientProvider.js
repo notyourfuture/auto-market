@@ -10,7 +10,7 @@ let cart = JSON.parse(localStorage.getItem("cart"));
 const INIT_STATE = {
   autos: null,
   detail: null,
-  autosCount: cart ? cart.autos.length : 0,
+  autosCount: cart ? cart.autos?.length : 0,
   cart: null,
 };
 
@@ -105,7 +105,7 @@ const ClientProvider = (props) => {
         autos: [],
       };
     }
-    let check = cart.autos.find((item) => {
+    let check = cart.autos?.find((item) => {
       return item.auto.id === id;
     });
     if (!check) {
