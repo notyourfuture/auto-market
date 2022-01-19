@@ -4,7 +4,7 @@ import MyTable from "../components/MyTable";
 
 const AdminPanel = () => {
   return (
-    <div className="admin-panel">
+    <div className="admin-panel" style={{ marginTop: "120px" }}>
       <h2>ADMIN ROOM</h2>
       <MyTable />
       <ToastContainer />
