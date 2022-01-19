@@ -12,11 +12,13 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
-import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import { Badge } from "@mui/material";
 import { ClientContext } from "../contexts/ClientProvider";
 import { AuthContext } from "../contexts/AuthProvider";
 import Logoout from "../images/logout.png";
+
+import LoginIcon from "@mui/icons-material/Login";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -42,7 +44,7 @@ const MyNavbar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="fixed" sx={{ backgroundColor: "black" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link to="/">
@@ -123,7 +125,7 @@ const MyNavbar = () => {
             <Link to="/cart">
               <IconButton color="inherit">
                 <Badge badgeContent={autosCount} color="error">
-                  <ShoppingBasketIcon />
+                  <LocalGroceryStoreIcon />
                 </Badge>
               </IconButton>
             </Link>
@@ -137,7 +139,7 @@ const MyNavbar = () => {
             </>
           ) : (
             <Button color="inherit" onClick={authWithGoogle}>
-              Enter
+              <LoginIcon />
             </Button>
           )}
         </Toolbar>

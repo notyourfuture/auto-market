@@ -45,7 +45,12 @@ const AddAuto = () => {
 
   return (
     <div className="add-auto">
-      <Container>
+      <Container
+        sx={{
+          width: "50vw",
+          marginTop: "20vh",
+        }}
+      >
         <h2>ADD AUTO</h2>
         <form onSubmit={handleSubmit}>
           <TextField
@@ -72,7 +77,7 @@ const AddAuto = () => {
             variant="standard"
             value={newAuto.price}
           />
-         
+
           <TextField
             onChange={handleInput}
             fullWidth
@@ -105,7 +110,12 @@ const AddAuto = () => {
             variant="standard"
             value={newAuto.image}
           />
-          <Button type="submit" variant="contained">
+          <Button
+            type="submit"
+            variant="contained"
+            fullWidth
+            sx={{ marginTop: "4vw" }}
+          >
             ADD
           </Button>
         </form>

@@ -28,7 +28,7 @@ export default function CartTable({ cart }) {
   const { changeCountCartAuto, deleteAutoInCart } =
     React.useContext(ClientContext);
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} sx={{ marginTop: "100px" }}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -90,7 +90,7 @@ export default function CartTable({ cart }) {
             <TableCell>Total price:</TableCell>
             <TableCell>{cart.totalPrice}</TableCell>
             <Link to="/buy">
-              <Button>Pay</Button>
+              <Button variant="outlined">Pay</Button>
             </Link>
           </TableRow>
         </TableFooter>
