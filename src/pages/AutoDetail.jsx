@@ -14,13 +14,13 @@ const AutoDetail = () => {
     return <h2>Loading...</h2>;
   }
   return (
-    <Container>
+    <Container sx={{ marginTop: "10vw" }}>
       <h2>Auto DETAIL</h2>
       <div className="auto-detail">
         <Grid container>
           <Grid item xs={12} sm={8} md={8}>
             <div>
-              <img src={detail.image} alt={detail.name} />
+              <img width={"600px"} src={detail.image} alt={detail.name} />
             </div>
           </Grid>
           <Grid item xs={12} sm={4} md={4}>
@@ -42,6 +42,15 @@ const AutoDetail = () => {
                 <li>
                   <span>Color: </span>
                   <strong>{detail.color}</strong>
+                </li>
+                <li>
+                  <span>Details: </span>
+                  <strong>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Totam libero, at dicta voluptatem dolores beatae perferendis
+                    enim quae adipisci commodi ipsam dolorum, possimus minus nam
+                    sed rem sequi reprehenderit? Repellat.
+                  </strong>
                 </li>
               </ul>
               <h3>Price: {detail.price} $</h3>

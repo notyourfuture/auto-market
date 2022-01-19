@@ -6,7 +6,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Button, TableFooter } from "@mui/material";
+
+import { Button, TableFooter, Text } from "@mui/material";
 import { ClientContext } from "../contexts/ClientProvider";
 import DeleteIcon from "../images/delete.png";
 import { Link } from "react-router-dom";
@@ -87,8 +88,13 @@ export default function CartTable({ cart }) {
         </TableBody>
         <TableFooter>
           <TableRow>
-            <TableCell>Total price:</TableCell>
-            <TableCell>{cart.totalPrice}</TableCell>
+            <TableCell>
+              <h5>Total price:</h5>
+            </TableCell>
+
+            <TableCell>
+              <h5>{cart.totalPrice} </h5>
+            </TableCell>
             <Link to="/buy">
               <Button variant="outlined">Pay</Button>
             </Link>
