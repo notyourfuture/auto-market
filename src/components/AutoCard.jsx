@@ -12,7 +12,7 @@ export default function AutoCard({ item }) {
   const { addAndDeleteAutoInCart, checkAutoInCart } =
     React.useContext(ClientContext);
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, height: 300 }}>
       <CardMedia
         component="img"
         height="140"

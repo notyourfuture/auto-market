@@ -12,12 +12,26 @@ code {
     monospace;
 }
 
-a{
+a {
   text-decoration: none !important;
-  color:white !important
+  color: white !important
 }
 
-.filter-autos{
+.filter-autos {
   display: flex;
   justify-content: space-between;
+}
+
+.auto-card-image {
+  object-fit: contain !important;
+}
+
+.auto-card-title {
+  height: 32%;
+  overflow: hidden;
+
+}
+
+.css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected{
+  background-color: black !important;
 }

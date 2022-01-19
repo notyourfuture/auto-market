@@ -1,16 +1,6 @@
 {
   "autos": [
     {
-      "brand": "Toyota ",
-      "model": "Toyota Land Cruiser 300",
-      "price": 100000,
-      "volume": "4.0",
-      "data_of_manufacture": "2020",
-      "color": "white ",
-      "image": "https://avatars.mds.yandex.net/get-autoru-vos/2127639/df68cf9d9cd3a9024b64c61c7ddbf05b/1200x900n",
-      "id": 2
-    },
-    {
       "brand": "Mercedes Benz ",
       "model": "Mercedes Benz G500 ",
       "price": 70000,
@@ -69,16 +59,6 @@
       "color": "Black",
       "image": "https://autoru.naydex.net/i2eW63E48/dfdd10TFq4C/7Km_ixdwzrP7UI-mf31UB7btDQZscf6VIw4vp7afDvt4Do8_hcYaPoE0iVmOs2E5lXL3usr3vANA5BtolpM4Evi4qdrTdgxnK0Jcp68oAdWxaJoXa7OwH_gGIm1-lwHh98bLqRRR3CxRb9KaRzG2NAEkqSSGKu8W1LCK-AhOpURvZ_aOme4BcPXCRCU_9BEKZCiMATN6dZX-wyioPNdPazQIyG4XGoHuXq6cg8YzejTH7SJngS5g3dSyivfLAa7K5c",
       "id": 8
-    },
-    {
-      "brand": "BMW",
-      "model": "4 серии 420i G22, G23",
-      "price": 38000,
-      "volume": "2.0",
-      "data_of_manufacture": "2020",
-      "color": "Dark Blue",
-      "image": "https://autoru.naydex.net/i2eW63E48/dfdd10TFq4C/7Km_ixdwzrP7UI-mf31UB7btDQZscf6VIw4vp7afDvt4Do8_hAda_IH2C1mOpaJsFrKibJ51_UOUpFrr1BG4B62sK88G45gmPpbd8i8oAdWxaJoXa7OwH_gGIm1-lwHh98bLqRRR3CxRb9KaRzG2NAEkqSSGKu8W1LCK-AhOpURvZ_aOme4BcPXCRCU_9BEKZCiMATN6dZX-wyioPNdPazQIyG4XGoHuXq6cg8YzejTH7SJngS5g3dSyivfLAa7K5c",
-      "id": 9
     }
   ]
 }
