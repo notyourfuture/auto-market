@@ -1,106 +1,244 @@
-import * as React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import { Add, Remove } from "@material-ui/icons";
+import styled from "styled-components";
+import Footer from "./Footer/Footer";
+import Announcement from "./Announcement";
+import MyNavbar from "../components/MyNavbar";
+// import { mobile } from "../responsive";
 
-import { Button, TableFooter, Text } from "@mui/material";
-import { ClientContext } from "../contexts/ClientProvider";
-import DeleteIcon from "../images/delete.png";
-import { Link } from "react-router-dom";
+const Container = styled.div``;
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
+const Wrapper = styled.div`
+  padding: 20px;
+`;
 
-const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
-];
+const Title = styled.h1`
+  font-weight: 300;
+  text-align: center;
+`;
 
-export default function CartTable({ cart }) {
-  console.log(cart);
-  const { changeCountCartAuto, deleteAutoInCart } =
-    React.useContext(ClientContext);
+const Top = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+`;
+
+const TopButton = styled.button`
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  border: ${(props) => props.type === "filled" && "none"};
+  background-color: ${(props) =>
+    props.type === "filled" ? "black" : "transparent"};
+  color: ${(props) => props.type === "filled" && "white"};
+`;
+
+const TopTexts = styled.div``;
+const TopText = styled.span`
+  text-decoration: underline;
+  cursor: pointer;
+  margin: 0px 10px;
+`;
+
+const Bottom = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const Info = styled.div`
+  flex: 3;
+`;
+
+const Product = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const ProductDetail = styled.div`
+  flex: 2;
+  display: flex;
+`;
+
+const Image = styled.img`
+  width: 200px;
+`;
+
+const Details = styled.div`
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+`;
+
+const ProductName = styled.span``;
+
+const ProductId = styled.span``;
+
+const ProductColor = styled.div`
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: ${(props) => props.color};
+`;
+
+const ProductSize = styled.span``;
+
+const PriceDetail = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ProductAmountContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+`;
+
+const ProductAmount = styled.div`
+  font-size: 24px;
+  margin: 5px;
+`;
+
+const ProductPrice = styled.div`
+  font-size: 30px;
+  font-weight: 200;
+`;
+
+const Hr = styled.hr`
+  background-color: #eee;
+  border: none;
+  height: 1px;
+`;
+
+const Summary = styled.div`
+  flex: 1;
+  border: 0.5px solid lightgray;
+  border-radius: 10px;
+  padding: 20px;
+  height: 50vh;
+`;
+
+const SummaryTitle = styled.h1`
+  font-weight: 200;
+`;
+
+const SummaryItem = styled.div`
+  margin: 30px 0px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: ${(props) => props.type === "total" && "500"};
+  font-size: ${(props) => props.type === "total" && "24px"};
+`;
+
+const SummaryItemText = styled.span``;
+
+const SummaryItemPrice = styled.span``;
+
+const Button = styled.button`
+  width: 100%;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  font-weight: 600;
+`;
+
+const CartTable = () => {
   return (
-    <TableContainer component={Paper} sx={{ marginTop: "100px" }}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>BRAND</TableCell>
-            <TableCell align="right">MODEL</TableCell>
-            <TableCell align="right">Image</TableCell>
-            <TableCell align="right">Count</TableCell>
-            <TableCell align="right">SubPrice</TableCell>
-            <TableCell align="right">#</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {cart.autos.map((item) => (
-            <TableRow
-              key={item.auto.id}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {item.auto.brand}
-              </TableCell>
-              <TableCell align="right">{item.auto.model}</TableCell>
-              <TableCell align="right">
-                {" "}
-                <Link to={`/auto/${item.auto.id}`}>
-                  {" "}
-                  <img width="60" src={item.auto.image} alt="auto" />{" "}
-                </Link>{" "}
-              </TableCell>
-              <TableCell align="right">
-                {" "}
-                <input
-                  onChange={(event) => {
-                    if (event.target.value < 1) {
-                      return;
-                    }
-                    changeCountCartAuto(event.target.value, item.auto.id);
-                  }}
-                  type="number"
-                  value={item.count}
-                  min="1"
-                />{" "}
-              </TableCell>
-              <TableCell align="right">{item.subPrice}</TableCell>
-              <TableCell align="right">
-                {" "}
-                <img
-                  style={{ cursor: "pointer" }}
-                  width="30"
-                  src={DeleteIcon}
-                  alt="del-icon"
-                  onClick={() => deleteAutoInCart(item.auto.id)}
-                />{" "}
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-        <TableFooter>
-          <TableRow>
-            <TableCell>
-              <h5>Total price:</h5>
-            </TableCell>
-
-            <TableCell>
-              <h5>{cart.totalPrice} </h5>
-            </TableCell>
-            <Link to="/buy">
-              <Button variant="outlined">Pay</Button>
-            </Link>
-          </TableRow>
-        </TableFooter>
-      </Table>
-    </TableContainer>
+    <Container>
+      <MyNavbar />
+      <Announcement />
+      <Wrapper>
+        <Title>YOUR BAG</Title>
+        <Top>
+          <TopButton>CONTINUE SHOPPING</TopButton>
+          <TopTexts>
+            <TopText>Shopping Bag(2)</TopText>
+            <TopText>Your Wishlist (0)</TopText>
+          </TopTexts>
+          <TopButton type="filled">CHECKOUT NOW</TopButton>
+        </Top>
+        <Bottom>
+          <Info>
+            <Product>
+              <ProductDetail>
+                <Image src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1614188818-TD1MTHU_SHOE_ANGLE_GLOBAL_MENS_TREE_DASHERS_THUNDER_b01b1013-cd8d-48e7-bed9-52db26515dc4.png?crop=1xw:1.00xh;center,top&resize=480%3A%2A" />
+                <Details>
+                  <ProductName>
+                    <b>Product:</b> JESSIE THUNDER SHOES
+                  </ProductName>
+                  <ProductId>
+                    <b>ID:</b> 93813718293
+                  </ProductId>
+                  <ProductColor color="black" />
+                  <ProductSize>
+                    <b>Size:</b> 37.5
+                  </ProductSize>
+                </Details>
+              </ProductDetail>
+              <PriceDetail>
+                <ProductAmountContainer>
+                  <Add />
+                  <ProductAmount>2</ProductAmount>
+                  <Remove />
+                </ProductAmountContainer>
+                <ProductPrice>$ 30</ProductPrice>
+              </PriceDetail>
+            </Product>
+            <Hr />
+            <Product>
+              <ProductDetail>
+                <Image src="https://i.pinimg.com/originals/2d/af/f8/2daff8e0823e51dd752704a47d5b795c.png" />
+                <Details>
+                  <ProductName>
+                    <b>Product:</b> HAKURA T-SHIRT
+                  </ProductName>
+                  <ProductId>
+                    <b>ID:</b> 93813718293
+                  </ProductId>
+                  <ProductColor color="gray" />
+                  <ProductSize>
+                    <b>Size:</b> M
+                  </ProductSize>
+                </Details>
+              </ProductDetail>
+              <PriceDetail>
+                <ProductAmountContainer>
+                  <Add />
+                  <ProductAmount>1</ProductAmount>
+                  <Remove />
+                </ProductAmountContainer>
+                <ProductPrice>$ 20</ProductPrice>
+              </PriceDetail>
+            </Product>
+          </Info>
+          <Summary>
+            <SummaryTitle>ORDER SUMMARY</SummaryTitle>
+            <SummaryItem>
+              <SummaryItemText>Subtotal</SummaryItemText>
+              <SummaryItemPrice>$ 80</SummaryItemPrice>
+            </SummaryItem>
+            <SummaryItem>
+              <SummaryItemText>Estimated Shipping</SummaryItemText>
+              <SummaryItemPrice>$ 5.90</SummaryItemPrice>
+            </SummaryItem>
+            <SummaryItem>
+              <SummaryItemText>Shipping Discount</SummaryItemText>
+              <SummaryItemPrice>$ -5.90</SummaryItemPrice>
+            </SummaryItem>
+            <SummaryItem type="total">
+              <SummaryItemText>Total</SummaryItemText>
+              <SummaryItemPrice>$ 80</SummaryItemPrice>
+            </SummaryItem>
+            <Button>CHECKOUT NOW</Button>
+          </Summary>
+        </Bottom>
+      </Wrapper>
+      <Footer />
+    </Container>
   );
-}
+};
+
+export default CartTable;

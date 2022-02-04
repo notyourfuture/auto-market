@@ -24,7 +24,7 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const MyNavbar = () => {
   const { autosCount } = React.useContext(ClientContext);
-  const { authWithGoogle, logout, user } = React.useContext(AuthContext);
+  const { authWithGoogle, logOut, user } = React.useContext(AuthContext);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -133,7 +133,7 @@ const MyNavbar = () => {
           {user ? (
             <>
               <MenuItem>{user.email}</MenuItem>
-              <Button onClick={logout}>
+              <Button onClick={logOut}>
                 <img width="30" src={Logoout} alt="logout" />
               </Button>
             </>

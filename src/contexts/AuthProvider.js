@@ -34,10 +34,7 @@ const AuthProvider = (props) => {
     }
   };
 
-  // ! AUTH WITH GOOGLE
   const googleProvider = new GoogleAuthProvider();
-
-  //   !  Проверка на то что пользователь в системе
 
   const checkUser = () => {
     onAuthStateChanged(auth, (user) => {
@@ -53,7 +50,7 @@ const AuthProvider = (props) => {
     checkUser();
   }, []);
 
-  const logout = async () => {
+  const logOut = async () => {
     try {
       await signOut(auth);
     } catch (error) {
@@ -65,7 +62,7 @@ const AuthProvider = (props) => {
     <AuthContext.Provider
       value={{
         authWithGoogle: authWithGoogle,
-        logout: logout,
+        logOut: logOut,
         user: state.user,
       }}
     >

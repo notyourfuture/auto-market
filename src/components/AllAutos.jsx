@@ -8,13 +8,13 @@ const AllAutos = () => {
   useEffect(() => {
     getAutos();
   }, []);
-  console.log(autos)
+  console.log(autos);
   if (!autos) {
     return <h2>Loading...</h2>;
   }
   return (
     <div>
-      <h1>ALL AUTOS</h1>
+      <h1>All products</h1>
       <div>
         <Grid container spacing={4}>
           {autos.map((item) => (

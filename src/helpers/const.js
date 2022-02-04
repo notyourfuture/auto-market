@@ -1,1 +1,1 @@
-export const API = "http://localhost:8000/autos";
+export const API = "https://auto-market.herokuapp.com/api/autos";

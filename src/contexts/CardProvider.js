@@ -1,40 +1,95 @@
-import { useState } from "react";
-import CardInfo from "./CardInfo";
+import valid from "card-validator";
 
-const useForm = () => {
-  const [values, setValues] = useState({
-    cardName: "",
-    cardNumber: "",
-    cardType: "",
-    cardExpiration: "",
-    cardSecurityCode: "",
-    cardPostalCode: "",
-    focus: "",
-  });
+export default function CardInfo(values) {
+  let errors = {};
+  let creditCard = valid.number(values.cardNumber);
 
-  const [errors, setErrors] = useState({});
+  creditCard.expirationDate = valid.expirationDate(values.cardExpiration);
+  creditCard.cvv = valid.cvv(values.cardSecurityCode);
+  creditCard.cardholderName = valid.cardholderName(values.cardName);
+  creditCard.postalCode = valid.postalCode(values.cardPostalCode);
 
-  const handleFocus = (e) => {
-    setValues({
-      ...values,
-      focus: e.target.name === "cardSecurityCode" ? "cvc" : e.target.name,
-    });
-  };
+  errors.show = true;
+  errors.variant = "danger";
+  errors.message = "An unknown error occured. Please try again later";
+  errors.cname = false;
+  errors.cnumber = false;
+  errors.ctype = false;
+  errors.cexp = false;
+  errors.ccvv = false;
+  errors.cpostal = false;
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setValues({
-      ...values,
-      [name]: value,
-    });
-  };
+  if (values.cardPostalCode === null || !values.cardPostalCode.trim()) {
+    errors.message = "Credit card postal code is not complete";
+  } else if (creditCard.postalCode.isValid) {
+    errors.cpostal = true;
+  } else {
+    errors.message = "Credit card postal code is invalid";
+  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setErrors(CardInfo(values));
-  };
+  //Card CVV expiration
+  if (values.cardSecurityCode === null || !values.cardSecurityCode.trim()) {
+    errors.message = "Credit card CVC is not complete";
+  } else if (creditCard.cvv.isValid) {
+    errors.ccvv = true;
+  } else {
+    errors.message = "Credit card CVC is invalid";
+  }
 
-  return { handleChange, handleFocus, handleSubmit, values, errors };
-};
+  //Card Expiration Verification
+  if (values.cardExpiration === null || !values.cardExpiration.trim()) {
+    errors.message = "Credit card expiration date is not complete";
+  } else if (creditCard.expirationDate.isValid) {
+    errors.cexp = true;
+  } else {
+    errors.message = "Credit card expiration date is invalid";
+  }
 
-export default useForm;
+  //Card Type Verification
+  if (
+    values.cardType === null ||
+    !values.cardType.trim() ||
+    creditCard.card === null
+  ) {
+    errors.message = "Credit card type is not complete";
+  } else if (
+    creditCard.card.type &&
+    creditCard.card.type.toUpperCase() === values.cardType.toUpperCase()
+  ) {
+    errors.ctype = true;
+  } else {
+    errors.message = "Credit card type is invalid";
+  }
+
+  //Card Number Verification
+  if (values.cardNumber === null || !values.cardNumber.trim()) {
+    errors.message = "Credit card number is not complete";
+  } else if (creditCard.isValid) {
+    errors.cnumber = true;
+  } else {
+    errors.message = "Credit card number is invalid";
+  }
+
+  //Cardholder Name Verification
+  if (values.cardName === null || !values.cardName.trim()) {
+    errors.message = "Cardholder name is not complete";
+  } else if (creditCard.cardholderName.isValid) {
+    errors.cname = true;
+  } else {
+    errors.message = "Cardholder name is invalid";
+  }
+
+  if (
+    errors.ctype &&
+    errors.cname &&
+    errors.cnumber &&
+    errors.cexp &&
+    errors.cpostal &&
+    errors.ccvv
+  ) {
+    errors.variant = "success";
+    errors.message = "Credit Card is valid";
+  }
+
+  return errors;
+}
