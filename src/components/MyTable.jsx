@@ -8,7 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { AdminContext } from "../contexts/AdminProvider";
 import { Button } from "@mui/material";
-import EditRow from "./EditRow"
+import EditRow from "./EditRow";
 
 export default function MyTable() {
   const { getAutos, autos, deleteAuto } = React.useContext(AdminContext);
@@ -16,7 +16,7 @@ export default function MyTable() {
     getAutos();
   }, []);
 
-  console.log(autos )
+  console.log(autos);
 
   const [editAuto, setEditAuto] = React.useState(null);
   console.log(editAuto);
@@ -39,41 +39,37 @@ export default function MyTable() {
             <TableCell align="right">Image</TableCell>
             <TableCell align="right">#</TableCell>
             <TableCell align="right">#</TableCell>
-
           </TableRow>
         </TableHead>
         <TableBody>
           {autos.map((row) => (
             <React.Fragment key={row.id}>
-            {editAuto?.id === row.id? (
-              <EditRow 
-              setEditAuto={setEditAuto}
-              editAuto={editAuto}
-              />
-            ) : (
-              <TableRow
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.brand}
-              </TableCell>
-              <TableCell align="right">{row.model}</TableCell>
-              <TableCell align="right">{row.price}</TableCell>
-              <TableCell align="right">{row.volume}</TableCell>
-              <TableCell align="right">{row.color}</TableCell>
-              <TableCell align="right">{row.data_of_manufacture}</TableCell>
+              {editAuto?.id === row.id ? (
+                <EditRow setEditAuto={setEditAuto} editAuto={editAuto} />
+              ) : (
+                <TableRow
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {row.brand}
+                  </TableCell>
+                  <TableCell align="right">{row.model}</TableCell>
+                  <TableCell align="right">{row.price}</TableCell>
+                  <TableCell align="right">{row.volume}</TableCell>
+                  <TableCell align="right">{row.color}</TableCell>
+                  <TableCell align="right">{row.data_of_manufacture}</TableCell>
 
-              <TableCell align="right">
-                <img width={100} src={row.image} alt="auto" />
-              </TableCell>
-              <TableCell align="right">
-                <Button onClick={() => setEditAuto(row)}>EDIT</Button>
-              </TableCell>
-              <TableCell align="right">
-                <Button onClick={() => deleteAuto(row.id)}>DELETE</Button>
-              </TableCell>
-            </TableRow>  
-            )}
+                  <TableCell align="right">
+                    <img width={100} src={row.image} alt="auto" />
+                  </TableCell>
+                  <TableCell align="right">
+                    <Button onClick={() => setEditAuto(row)}>EDIT</Button>
+                  </TableCell>
+                  <TableCell align="right">
+                    <Button onClick={() => deleteAuto(row.id)}>DELETE</Button>
+                  </TableCell>
+                </TableRow>
+              )}
             </React.Fragment>
           ))}
         </TableBody>

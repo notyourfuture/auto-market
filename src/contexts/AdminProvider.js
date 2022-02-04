@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import { toast } from "react-toastify";
+
 import { API } from "../helpers/const";
 import axios, { Axios } from "axios";
 
@@ -48,10 +48,6 @@ const AdminProvider = (props) => {
         price: +auto.price,
       });
       getAutos();
-      // toast.success("Success!", {
-      //   pauseOnHOver: false,
-      //   autoClose: 1000,
-      // });
     } catch (error) {
       console.log(error);
     }
@@ -61,10 +57,6 @@ const AdminProvider = (props) => {
     try {
       await axios.delete(`${API}/${id}`);
       getAutos();
-      // toast.success("Deleted!", {
-      //   pauseOnHover: false,
-      //   autoClose: 1000,
-      // });
     } catch (error) {
       console.log(error);
     }
